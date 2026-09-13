@@ -820,10 +820,25 @@ body {
     .title .hat {
         position: absolute;
         right: -98px;
-        top: -51px !important;
+        top: -350px;
         transform: rotate(-40deg);
         z-index: -1;
-        animation: topHat 4s 7s forwards ease;
+        animation: topHatMobile 4s 7s forwards ease;
+    }
+
+    @keyframes topHatMobile {
+        20%,
+        30% {
+            top: -51px;
+            transform-origin: left;
+            transform: rotate(-40deg);
+        }
+
+        35%,
+        100% {
+            top: -51px;
+            transform: rotate(0deg);
+        }
     }
 
     .box__letter .letter__border {

@@ -12,7 +12,7 @@ import SmallLetter from "../components/SmallLetter";
 import manjariMain from "../assets/manjari_main.jpg";
 import photo1 from "../assets/manjari_bubble1.jpg";
 import photo2 from "../assets/manjari_bubble2.jpg";
-import photo3 from "../assets/manjari_bubble3.jpg";
+import photo3 from "../assets/manjari_bubble3.jpeg";
 
 const Home = () => {
     // ------------------- Hooks 

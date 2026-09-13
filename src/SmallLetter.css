@@ -395,9 +395,61 @@
 
 
 @media screen and (max-width: 658px) {
+    .smallLetter {
+        position: absolute !important;
+        bottom: 0.5px !important;
+        left: 20% !important;
+        transform: translateX(-10%) !important;
+        z-index: 50 !important;
+        margin: 0 !important;
+    }
+
+    .small-rajib-letter {
+        margin: 0 auto !important;
+        max-width: 320px;
+        height: 320px;
+    }
+
+    .small-rajib-envelope {
+        width: 80px;
+        height: 52px;
+        transform: translateY(220px) !important;
+        animation: Small-wiggle-mobile 0.3s 0.2s infinite !important;
+    }
+
+    @keyframes Small-wiggle-mobile {
+        0%, 100% { transform: translateY(220px) rotate(0deg); }
+        25% { transform: translateY(220px) rotate(2deg); }
+        50% { transform: translateY(220px) rotate(0deg); }
+        75% { transform: translateY(220px) rotate(-2deg); }
+    }
+
+    .small-rajib-envelope-detail::before {
+        width: 60px;
+        height: 60px;
+        top: 25px;
+    }
+
+    .small-rajib-envelope-detail::after {
+        width: 65px;
+        height: 65px;
+        top: -42px;
+    }
+
+    .small-rajib-envelope-paper {
+        height: 45px;
+        width: 76px;
+    }
+
+    .small-rajib-paper {
+        height: 45px;
+        width: 76px;
+        transform: translateY(180px);
+    }
+
     @keyframes upthenscale {
         0% {
-            transform: translateY(250px);
+            transform: translateY(180px);
         }
 
         50% {
@@ -411,7 +463,7 @@
         }
 
         100% {
-            height: 280px;
+            height: 260px;
             width: 100%;
             transform: translateY(0);
         }
@@ -419,45 +471,15 @@
 
     .small-rajib-paper-content {
         font-size: 14px;
-        width: 290px;
-    }
-
-    .small-rajib-envelope-paper {
-        height: 40px;
-    }
-
-    .small-rajib-paper {
-        height: 36px;
-        width: 65px;
-        transform: translateY(275px);
-    }
-
-    .small-rajib-envelope {
-        width: 65px;
-        height: 40px;
-    }
-
-    .small-rajib-envelope-detail::before {
-        width: 55px;
-        height: 56px;
-        top: 30px;
-    }
-
-    .small-rajib-envelope-detail::after {
-        width: 63px;
-        height: 64px;
-        top: -46px;
+        padding: 16px;
+        width: 100%;
     }
 
     .small-rajib-envelope-flap {
-        border-left: 34px solid transparent;
-        border-right: 31px solid transparent;
-        border-bottom: 45px solid #f36363;
-    }
-
-    .small-rajib-envelope-flap {
+        border-left: 40px solid transparent;
+        border-right: 40px solid transparent;
+        border-bottom: 42px solid #f36363;
         transition: all 300ms ease-in-out;
-	transform: translateY(-6px);
-}
-
+        transform: translateY(-4px);
+    }
 }

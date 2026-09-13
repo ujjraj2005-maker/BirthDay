@@ -472,58 +472,58 @@
 
 @media screen and (max-width: 658px) {
     .boxMail .crossAll {
-        top: 12px;
-        right: 12px;
-        font-size: 28px;
-        padding: 6px 12px;
+        top: 10px;
+        right: 10px;
+        font-size: 26px;
+        padding: 6px 10px;
         z-index: 100000005;
     }
 
     .boxMail .boxMail-container {
         position: absolute;
         width: 600px;
-        height: 480px;
+        height: 440px;
         display: flex;
         margin: 0;
-        left: 50% !important;
+        left: calc(50% - (65px * (100vw - 24px) / 480)) !important;
         top: 50% !important;
-        transform: translate(-50%, -50%) scale(calc(min(0.85, (100vw - 28px) / 720))) !important;
+        transform: translate(-50%, -50%) scale(calc(min(0.75, (100vw - 24px) / 480))) !important;
         -webkit-perspective: 2000px;
         perspective: 2000px;
     }
 
     .boxMail .boxMail-container:hover {
-        transform: translate(-50%, -50%) scale(calc(min(0.85, (100vw - 28px) / 720))) rotate(-3deg) !important;
-        filter: drop-shadow(0 0 12px #FF7882);
+        transform: translate(-50%, -50%) scale(calc(min(0.75, (100vw - 24px) / 480))) rotate(-2deg) !important;
+        filter: drop-shadow(0 0 10px #FF7882);
     }
 
     .boxMail .boxMail-container:hover .card1 {
-        transform: translate(-135px, -240px) rotateY(-140deg);
+        transform: translate(-150px, -220px) rotateY(-140deg);
     }
 
     .boxMail .boxMail-container .card2 h3 {
         font-family: 'Dancing Script', cursive;
-        font-size: 26px;
-        margin-bottom: 10px;
-        padding-bottom: 6px;
+        font-size: 24px;
+        margin-bottom: 8px;
+        padding-bottom: 4px;
     }
 
     .boxMail .boxMail-container .card2 .card2-message-text {
         font-family: "Sriracha", "cursive";
-        padding: 6px 0;
-        font-size: 15px;
-        line-height: 1.55;
+        padding: 4px 0;
+        font-size: 14px;
+        line-height: 1.5;
         flex-grow: 1;
         overflow-y: hidden;
         text-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
     }
 
     .boxMail .boxMail-container .card2 .signature {
-        font-size: 18px;
-        margin-top: 6px;
+        font-size: 16px;
+        margin-top: 4px;
     }
 
     .boxMail .boxMail-container .card2 .card2-content {
-        padding: 16px 18px;
+        padding: 14px 16px;
     }
 }
