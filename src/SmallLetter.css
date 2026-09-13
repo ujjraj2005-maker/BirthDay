@@ -78,6 +78,35 @@
     }
 }
 
+@keyframes Small-wiggle-mobile {
+    0%, 100% { transform: translateY(220px) rotate(0deg); }
+    25% { transform: translateY(220px) rotate(2deg); }
+    50% { transform: translateY(220px) rotate(0deg); }
+    75% { transform: translateY(220px) rotate(-2deg); }
+}
+
+@keyframes upthenscaleMobile {
+    0% {
+        transform: translateY(180px);
+    }
+
+    50% {
+        transform: translateY(0);
+    }
+
+    60% {
+        height: 100px;
+        width: 90px;
+        transform: translateY(0);
+    }
+
+    100% {
+        height: 260px;
+        width: 100%;
+        transform: translateY(0);
+    }
+}
+
 /* --- Container and State Classes --- */
 
 .small-rajib-letter {
@@ -420,13 +449,6 @@
         animation: Small-wiggle-mobile 0.3s 0.2s infinite !important;
     }
 
-    @keyframes Small-wiggle-mobile {
-        0%, 100% { transform: translateY(220px) rotate(0deg); }
-        25% { transform: translateY(220px) rotate(2deg); }
-        50% { transform: translateY(220px) rotate(0deg); }
-        75% { transform: translateY(220px) rotate(-2deg); }
-    }
-
     .small-rajib-envelope-detail::before {
         width: 60px;
         height: 60px;
@@ -452,26 +474,10 @@
         box-sizing: border-box;
     }
 
-    @keyframes upthenscale {
-        0% {
-            transform: translateY(180px);
-        }
-
-        50% {
-            transform: translateY(0);
-        }
-
-        60% {
-            height: 100px;
-            width: 90px;
-            transform: translateY(0);
-        }
-
-        100% {
-            height: 260px;
-            width: 100%;
-            transform: translateY(0);
-        }
+    .small-rajib-letter--open .small-rajib-paper {
+        animation-name: upthenscaleMobile !important;
+        animation-duration: .6s;
+        animation-fill-mode: forwards;
     }
 
     .small-rajib-paper-content {
