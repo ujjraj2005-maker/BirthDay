@@ -178,7 +178,8 @@ body {
 }
 
 .title .happy,
-.title .birthday {
+.title .birthday,
+.title .mylove {
     position: relative;
     text-shadow: 4px 4px var(--color-black),
         -4px 4px var(--color-black),
@@ -195,7 +196,8 @@ body {
 }
 
 .title .happy span,
-.title .birthday span {
+.title .birthday span,
+.title .mylove span {
     transform: translateY(50px);
     opacity: 0;
     visibility: hidden;
@@ -211,6 +213,10 @@ body {
 }
 
 .title .birthday {
+    color: var(--color-text-pink);
+}
+
+.title .mylove {
     color: var(--color-text-pink);
 }
 
@@ -998,4 +1004,102 @@ body {
     opacity: 0;
     animation: popInAndFloat 1.0s ease-out 16.0s forwards;
     transform: translateY(310px);
+}
+
+/* =========================================================================
+   📸 3 PHOTO BUBBLES STYLING (Manjari Photos)
+   ========================================================================= */
+.photo-bubbles-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 15;
+}
+
+.photo-bubble {
+    position: absolute;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid #ffffff;
+    box-shadow: 0 10px 25px rgba(209, 56, 82, 0.5), 0 0 20px rgba(255, 255, 255, 0.95);
+    pointer-events: auto;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    background: #ffffff;
+}
+
+.photo-bubble img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-bubble:hover {
+    transform: scale(1.25) rotate(6deg) !important;
+    z-index: 35;
+    box-shadow: 0 14px 30px rgba(209, 56, 82, 0.75), 0 0 30px rgba(255, 255, 255, 1);
+}
+
+.bubble-1 {
+    width: 125px;
+    height: 125px;
+    top: -35px;
+    left: -50px;
+    animation: floatBubble1 4s ease-in-out infinite alternate;
+}
+
+.bubble-2 {
+    width: 115px;
+    height: 115px;
+    top: -40px;
+    right: -35px;
+    animation: floatBubble2 4.5s ease-in-out infinite alternate;
+}
+
+.bubble-3 {
+    width: 120px;
+    height: 120px;
+    bottom: 15px;
+    right: -55px;
+    animation: floatBubble3 3.8s ease-in-out infinite alternate;
+}
+
+@keyframes floatBubble1 {
+    0% { transform: translateY(0px) rotate(0deg); }
+    100% { transform: translateY(-12px) rotate(5deg); }
+}
+
+@keyframes floatBubble2 {
+    0% { transform: translateY(0px) rotate(0deg); }
+    100% { transform: translateY(10px) rotate(-6deg); }
+}
+
+@keyframes floatBubble3 {
+    0% { transform: translateY(0px) rotate(0deg); }
+    100% { transform: translateY(-14px) rotate(4deg); }
+}
+
+/* Mobile Responsiveness for Photo Bubbles */
+@media screen and (max-width: 658px) {
+    .bubble-1 {
+        width: 85px;
+        height: 85px;
+        top: -20px;
+        left: -25px;
+    }
+    .bubble-2 {
+        width: 78px;
+        height: 78px;
+        top: -25px;
+        right: -20px;
+    }
+    .bubble-3 {
+        width: 82px;
+        height: 82px;
+        bottom: 10px;
+        right: -30px;
+    }
 }

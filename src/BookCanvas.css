@@ -374,10 +374,10 @@
 .boxMail .boxMail-container .card2 .card2-message-text {
     font-family: "Sriracha", "cursive";
     padding: 10px 0;
-    font-size: 20px;
+    font-size: 19px;
     line-height: 1.6;
     flex-grow: 1;
-    overflow-y: auto;
+    overflow-y: hidden;
     text-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -477,7 +477,9 @@
         height: 500px;
         display: flex;
         margin: 0;
-        transform: scale(0.9);
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) scale(calc(min(0.85, (100vw - 16px) / 650))) !important;
         -webkit-perspective: 2000px;
         perspective: 2000px;
     }
@@ -503,7 +505,7 @@
         font-size: 16px;
         line-height: 1.6;
         flex-grow: 1;
-        overflow-y: auto;
+        overflow-y: hidden;
         text-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
     }
 

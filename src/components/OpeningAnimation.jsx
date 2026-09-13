@@ -50,29 +50,37 @@ const OpeningAnimation = ({ animateOut }) => {
         {/* Subtle, rotating ring - existing */}
         <circle cx="85" cy="15" r="10" stroke="rgba(255, 255, 255, 0.6)" strokeWidth="1" fill="none" className="deco-shape small-ring" />
 
-        {/* --- NEW RANDOM PARTICLES/CLOUDS --- */}
+        {/* --- 💖 4 FLOATING HEARTS IN BACKGROUND --- */}
+        {/* Heart 1 - Top Left */}
+        <g transform="translate(10, 18) scale(0.35)" className="deco-shape particle-red-1">
+          <path fill="#b10505" opacity="0.8" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+        </g>
+        {/* Heart 2 - Top Right */}
+        <g transform="translate(78, 22) scale(0.4)" className="deco-shape particle-white-1">
+          <path fill="rgba(255, 255, 255, 0.85)" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+        </g>
+        {/* Heart 3 - Bottom Left */}
+        <g transform="translate(18, 70) scale(0.45)" className="deco-shape particle-pink-1">
+          <path fill="rgba(255, 255, 255, 0.75)" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+        </g>
+        {/* Heart 4 - Bottom Right */}
+        <g transform="translate(82, 75) scale(0.38)" className="deco-shape particle-red-2">
+          <path fill="#b10505" opacity="0.75" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+        </g>
 
-        {/* Reddish particle 1 */}
+        {/* --- 🔴 4 FLOATING CIRCLES / BUBBLES IN BACKGROUND --- */}
         <circle cx="5" cy="50" r="3" fill="#8B0000" className="deco-shape particle-red-1" />
-        {/* White particle 1 */}
         <circle cx="90" cy="60" r="4" fill="rgba(255, 255, 255, 0.7)" className="deco-shape particle-white-1" />
-        {/* Soft pink particle 1 */}
         <circle cx="40" cy="10" r="6" fill="rgba(255, 192, 203, 0.5)" className="deco-shape particle-pink-1" />
-
-        {/* Reddish particle 2 */}
-        <circle cx="70" cy="95" r="2" fill="rgba(139, 0, 0, 0.8)" className="deco-shape particle-red-2" />
-        {/* White particle 2 */}
+        <circle cx="72" cy="48" r="3.5" fill="#a01818" opacity="0.8" className="deco-shape particle-red-1" />
         <circle cx="10" cy="5" r="5" fill="rgba(255, 255, 255, 0.6)" className="deco-shape particle-white-2" />
-        {/* Soft pink particle 2 */}
-        <circle cx="60" cy="70" r="7" fill="rgba(255, 192, 203, 0.4)" className="deco-shape particle-pink-2" />
+        <circle cx="85" cy="78" r="12" fill="rgba(255, 255, 255, 0.45)" className="deco-shape particle-white-1" />
 
-        {/* More scattered dots for a 'confetti' feel */}
+        {/* Scattered dots for a confetti feel */}
         <circle cx="25" cy="30" r="1" fill="rgba(255, 255, 255, 0.8)" className="deco-shape particle-dot-1" />
         <circle cx="75" cy="45" r="1.5" fill="rgba(139, 0, 0, 0.7)" className="deco-shape particle-dot-2" />
         <circle cx="48" cy="88" r="1" fill="rgba(255, 192, 203, 0.9)" className="deco-shape particle-dot-3" />
         <circle cx="55" cy="20" r="1.2" fill="rgba(255, 255, 255, 0.9)" className="deco-shape particle-dot-4" />
-
-
       </svg>
       <div id="CakeWrapper">
         <div className="MUNNA cake">
@@ -108,8 +116,8 @@ const OpeningAnimation = ({ animateOut }) => {
 
 
           <div className="MUNNA cakeText">
-            <h1 className="MUNNA cakeText-title">Happy 18th Birthday!</h1>
-            <div className="MUNNA cakeText-name">Trisha <div className="MUNNA cakeText-kitty-bow"></div></div>
+            <h1 className="MUNNA cakeText-title">Happy 19th Birthday!</h1>
+            <div className="MUNNA cakeText-name">Manjari My Babuuuuu <div className="MUNNA cakeText-kitty-bow"></div></div>
           </div>
 
 

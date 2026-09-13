@@ -1,45 +1,47 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { Link, useNavigate } from 'react-router'
 
 const LoveLetter = () => {
+    const navigate = useNavigate();
     const lettersData = [
         {
             id: 1,
-            name: "Rexon",
-            msg: "Wish you the happiest birthday",
+            name: "Ujjwal",
+            msg: "Wish you the happiest birthday , My lovee",
         },
         {
             id: 2,
-            name: "Rexon",
+            name: "Ujjwal",
             msg: "One picture from you can change my whole day, my whole mood, my whole heartbeat.",
         },
         {
             id: 3,
-            name: "Rexon",
+            name: "Ujjwal",
             msg: "Even through screens and pixels, your laugh reaches me like sunlight through a window—warm, real, and impossible to forget.",
         },
         {
             id: 4,
-            name: "Rexon",
+            name: "Ujjwal",
             msg: "Every notification from you feels like a heartbeat whispering, I’m here, and I love you.",
         },
         {
             id: 5,
-            name: "Rexon",
-            msg: "Our messages might travel through wires, but every word you send lands straight in my heart.",
+            name: "Ujjwal",
+            msg: "Our messages might travel through wires and signals, but every word you send lands straight in my heart.",
         },
         {
             id: 6,
-            name: "Rexon",
-            msg: "Ever since our we met, my heart knew where it wanted to stay— with you, in every soft moment, every smile, every quiet piece of forever.",
+            name: "Ujjwal",
+            msg: "Ever since we met, my heart knew where it wanted to stay— with you, in every soft moment, every smile, every quiet piece of forever.",
         },
         {
             id: 7,
-            name: "Rexon",
-            msg: " but you turned it into a memory my heart refuses to forget. Since then, every moment with you has felt softer, brighter, and filled with a kind of peace only you bring.",
+            name: "Ujjwal",
+            msg: "You turned every moment into a memory my heart refuses to forget. Since then, every moment with you has felt softer, brighter, and filled with a kind of peace only you bring.",
         },
         {
             id: 8,
-            name: "Rexon",
+            name: "Ujjwal",
             msg: "Since our first conversation, you’ve been the quiet spark that changed my world, turning ordinary days into moments that feel beautifully meant to be.",
         },
     ];
@@ -75,7 +77,10 @@ const LoveLetter = () => {
         letterEl.style.left = `${startLeft}px`;
         letterEl.style.top = `${startTop}px`;
         letterEl.style.margin = 0;
-        letterEl.style.zIndex = zIndexCounter;
+        
+        const newZ = zIndexCounter + 1;
+        setZIndexCounter(newZ);
+        letterEl.style.zIndex = newZ;
 
         const moveAt = (posX, posY) => {
             letterEl.style.left = `${posX - offsetX}px`;
@@ -113,7 +118,23 @@ const LoveLetter = () => {
 
 
     return (
-        <main className='munna bg-[#8b0000] h-screen w-full overflow-hidden'>
+        <main className='munna bg-[#8b0000] h-screen w-full overflow-hidden relative'>
+            {/* ✨ Ultra-Aesthetic Floating Heart Back Button */}
+            <button
+                onClick={() => navigate('/')}
+                className="fixed top-5 left-5 z-[99999] group flex items-center gap-2.5 px-4 md:px-5 py-2 md:py-2.5 bg-gradient-to-r from-rose-900/90 to-red-950/90 hover:from-rose-800 hover:to-red-900 text-white backdrop-blur-xl rounded-full border border-rose-300/40 shadow-[0_8px_25px_rgba(0,0,0,0.4)] hover:shadow-[0_8px_30px_rgba(244,63,94,0.4)] transition-all duration-300 active:scale-95 cursor-pointer"
+                aria-label="Back to Home"
+            >
+                <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-rose-500/30 group-hover:bg-rose-500/50 flex items-center justify-center border border-rose-200/30 group-hover:scale-110 transition-all duration-300">
+                    <svg className="w-4 h-4 text-rose-100 -translate-x-0.5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </div>
+                <span className="font-sriracha text-xs md:text-sm tracking-wide text-rose-100 drop-shadow-md flex items-center gap-1.5">
+                    Back to Home <span className="text-xs group-hover:scale-125 transition-transform duration-300">❤️</span>
+                </span>
+            </button>
+
             <section className="munna cssletter z-10">
                 <div className={`envelope ${openEnvelope ? "active" : ""}`}>
                     <button
@@ -125,9 +146,9 @@ const LoveLetter = () => {
                         <span className="munna heart-text">Open</span>
                     </button>
                     <div className="munna envelope-flap text-black relative">
-                        <div className='munna absolute left-1/2 top-[20%] -translate-x-1/2 flex items-center justify-center flex-col md:gap-y-2'>
+                        <div className={`munna absolute left-1/2 top-[20%] -translate-x-1/2 flex items-center justify-center flex-col md:gap-y-2 transition-transform duration-500 ${openEnvelope ? 'rotate-180' : ''}`}>
                             <span className='munna font-sriracha md:text-2xl text-lg'>Envelope Of Love</span>
-                            <span className='munna font-dancingScript md:text-3xl text-xl'>Dear Trisha</span>
+                            <span className='munna font-dancingScript md:text-3xl text-xl'>Dear Manjari</span>
                         </div>
                     </div>
                     <div className="munna envelope-folds">
@@ -137,7 +158,7 @@ const LoveLetter = () => {
                     </div>
                 </div>
 
-                <div className="munna letters" ref={lettersContainerRef}>
+                <div className={`munna letters ${openEnvelope ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'} transition-opacity duration-700`} ref={lettersContainerRef}>
                     {letters.map((letter) => (
                         <blockquote
                             key={letter.id}

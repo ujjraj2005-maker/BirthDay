@@ -9,14 +9,17 @@ import smileIcon from '../assets/smiley_icon.png'
 import { Link } from "react-router";
 import BookCanvas from "../components/BookCanvas";
 import SmallLetter from "../components/SmallLetter";
-import orihime from "../assets/orihime.jpg";
+import manjariMain from "../assets/manjari_main.jpg";
+import photo1 from "../assets/manjari_bubble1.jpg";
+import photo2 from "../assets/manjari_bubble2.jpg";
+import photo3 from "../assets/manjari_bubble3.jpg";
 
 const Home = () => {
     // ------------------- Hooks 
     const [Active, SetActive] = useState(true)
 
     useEffect(() => {
-        let datetxt = "19 Nov";
+        let datetxt = "14 Sept";
         let charArrDate = datetxt.split('');
         let currentIndex = 0;
         let date__of__birth = document.querySelector(".date__of__birth span");
@@ -76,6 +79,16 @@ const Home = () => {
                                 <span style={{ "--t": "6.2s" }}>a</span>
                                 <span style={{ "--t": "6.4s" }}>y</span>
                             </h1>
+                            <h1 className="mylove">
+                                <span style={{ "--t": "6.6s" }}>M</span>
+                                <span style={{ "--t": "6.8s" }}>y</span>
+                                <span style={{ "--t": "7.0s" }}>&nbsp;</span>
+                                <span style={{ "--t": "7.2s" }}>L</span>
+                                <span style={{ "--t": "7.4s" }}>o</span>
+                                <span style={{ "--t": "7.6s" }}>v</span>
+                                <span style={{ "--t": "7.8s" }}>e</span>
+                                <span style={{ "--t": "8.0s" }}>&nbsp;💕</span>
+                            </h1>
                             <div className="hat">
                                 <img src={hat} alt="" width="130" />
                             </div>
@@ -92,7 +105,7 @@ const Home = () => {
                                         <path fill="#d13852" d="M63.841 18.646c-.246-3.85-1.072-6.977-3.752-10.198c-5.369-6.439-17.71-7.511-23.23-1.312c-.963.912-1.872 2.01-2.785 3.322l-2.066 2.969l-2.067-2.969c-.916-1.312-1.827-2.411-2.79-3.322C21.627.937 9.287 2.008 3.921 8.448C1.237 11.669.412 14.796.166 18.646C-.184 30.092 8.122 39.257 9.147 40.6c5.637 6.613 11.786 12.866 18.03 18.627c1.13.989 2.106 1.812 3.082 2.628c.587.479 1.166.964 1.749 1.44c.582-.477 1.159-.961 1.743-1.44c.98-.816 1.956-1.639 3.082-2.628c6.247-5.761 12.397-12.01 18.04-18.627c1.025-1.343 9.332-10.508 8.979-21.954" />
                                         <path fill="#f1a5b1" d="M60.39 16.604a10.1 10.1 0 0 0-.457-2.909a9 9 0 0 0-1.169-2.42c-2.973-4.369-9.451-5.943-14.863-4.837c-2.111.508-4.225 1.302-5.197 3.318c-.331.865.365 1.281 1.44 1.228c3.894-.435 8.202-.043 11.645 1.63c.858.42 1.661.918 2.395 1.503c2.47 1.913 3.537 4.887 4.02 7.837c1.201-.242 1.854-1.683 2.01-2.965a10.5 10.5 0 0 0 .177-2.385" />
                                     </svg>
-                                    Click Here Trisha
+                                    <span className="inline-block leading-normal">Click Here Babyy</span>
                                 </div>
                             </button>
                             <div id="FromRexon">
@@ -106,7 +119,7 @@ const Home = () => {
                                             <path strokeLinejoin="round" d="M47.064 33.552A5.885 5.885 0 0 0 36 30.755a5.885 5.885 0 0 0-11.064 2.797c0 1.398.49 2.68 1.304 3.69l-.002.002L36 49.342l9.762-12.098l-.003-.002a5.86 5.86 0 0 0 1.305-3.69z" />
                                         </g>
                                     </svg>
-                                    From Rexon
+                                    <span className="inline-block leading-normal">From me babu</span>
                                 </Link>
                             </div>
                         </div>
@@ -114,12 +127,25 @@ const Home = () => {
 
                     <div className="right">
                         <div className="box__account">
+                            {/* 📸 3 Floating Photo Bubbles */}
+                            <div className="photo-bubbles-container">
+                                <div className="photo-bubble bubble-1" title="Manjari Photo 1">
+                                    <img src={photo1} alt="Manjari 1" />
+                                </div>
+                                <div className="photo-bubble bubble-2" title="Manjari Photo 2">
+                                    <img src={photo2} alt="Manjari 2" />
+                                </div>
+                                <div className="photo-bubble bubble-3" title="Manjari Photo 3">
+                                    <img src={photo3} alt="Manjari 3" />
+                                </div>
+                            </div>
+
                             <div className="image">
-                                <img src={orihime} alt="" />
+                                <img src={manjariMain} alt="Dear Manjari" />
                             </div>
                             <div className="name">
                                 <i className="fa-solid fa-heart"></i>
-                                <span>Dear Trisha</span>
+                                <span>Dear Manjari</span>
                                 <i className="fa-solid fa-heart"></i>
                             </div>
                             <div className="balloon_one">
@@ -175,7 +201,7 @@ const Home = () => {
                 {/* =========================== BoxMail Canvas =============================== */}
                 <BookCanvas active={Active} setActive={SetActive} />
 
-                {/* ========================== Small letter from rajib ========================= */}
+                {/* ========================== Small letter from Ujjwal ========================= */}
                 <section className="smallLetter absolute md:-bottom-26 -bottom-40 md:left-[45%] left-[50%] -translate-x-1/2" style={{ "--t": "15.6s" }}>
                     <SmallLetter />
                 </section>
