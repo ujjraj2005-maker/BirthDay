@@ -1,113 +1,499 @@
-import React, { useState, useRef } from 'react';
-import '../SmallLetter.css';
+/* --- Keyframes (UNCHANGED) --- */
 
-const SmallLetter = () => {
-    // 1. State to control the letter's open/close status
-    const [isOpen, setIsOpen] = useState(false);
+@keyframes upthenscale {
+    0% {
+        transform: translateY(260px);
+    }
 
-    // 2. Ref to hold the main letter container DOM element
-    // This is needed to manually add/remove the '--close' class for the animation timing
-    const letterRef = useRef(null);
+    50% {
+        transform: translateY(0);
+    }
 
-    // --- Logic for Envelope Click (Toggle) ---
+    60% {
+        height: 100px;
+        width: 90px;
+        transform: translateY(0);
+    }
 
-    const handleToggleLetter = () => {
-        const letterElement = letterRef.current;
-        if (!letterElement) return; // Safety check
-
-        if (isOpen) {
-            // CLOSE SEQUENCE:
-            // 1. Set the class for the closing animation
-            letterElement.classList.add('small-rajib-letter--close');
-            setIsOpen(false);
-
-            // 2. Remove the closing class after the animation duration (600ms)
-            setTimeout(() => {
-                letterElement.classList.remove('small-rajib-letter--close');
-            }, 600);
-
-        } else {
-            // OPEN SEQUENCE:
-            // 1. Ensure the close class is removed
-            letterElement.classList.remove('small-rajib-letter--close');
-            // 2. Set state to open (which adds 'small-rajib-letter--open')
-            setIsOpen(true);
-        }
-    };
-
-    // --- Logic for 'X' Click (Close Only) ---
-
-    const handleCloseLetter = () => {
-        const letterElement = letterRef.current;
-        if (!letterElement) return; // Safety check
-
-        // Start the close animation immediately
-        letterElement.classList.remove('small-rajib-letter--open');
-        letterElement.classList.add('small-rajib-letter--close');
-        setIsOpen(false); // Update state to reflect closed status
-
-        // Remove the closing class after the animation duration (600ms)
-        setTimeout(() => {
-            letterElement.classList.remove('small-rajib-letter--close');
-        }, 600);
-    };
-
-    // Determine the dynamic class based on 'isOpen' state
-    const letterStateClass = isOpen ? 'small-rajib-letter--open' : '';
-
-    return (
-        <>
-            <div
-                className={`small-rajib-letter ${letterStateClass}`}
-                ref={letterRef} // Attach the ref here
-            >
-                <div
-                    className="small-rajib-envelope"
-                    onClick={handleToggleLetter} // Attach the toggle handler
-                >
-                    <div className="small-rajib-envelope-flap"></div>
-                    <div className="small-rajib-envelope-paper"></div>
-                    <div className="small-rajib-envelope-detail"></div>
-                </div>
-
-                <div className="small-rajib-paper">
-    <div className="small-rajib-paper-content">
-        <div
-            className="small-rajib-paper-close"
-            onClick={handleCloseLetter} // Attach the close handler
-        >
-            x
-        </div>
-        <p>Hey Manjari my love,<br /><br />Just a little secret note to remind you how special you are to me. Wishing you the happiest birthday filled with endless smiles and happiness!<br /><br />With love,<br />Ujjwal</p>
-    </div>
-
-    {/* --- NEW SVG DIARY PAGE DECORATION --- */}
-    <svg className="rajib-diary-deco" viewBox="0 0 100 100" preserveAspectRatio="none">
-        {/* Left 'binding' line */}
-        <line x1="5" y1="0" x2="5" y2="100" stroke="#E0DDB7" strokeWidth="1" className="diary-line left-line" />
-        {/* Right 'border' line */}
-        <line x1="95" y1="0" x2="95" y2="100" stroke="#E0DDB7" strokeWidth="1" className="diary-line right-line" />
-        
-        {/* Optional: Top/bottom faint lines for page feel */}
-        <line x1="0" y1="5" x2="100" y2="5" stroke="#E0DDB7" strokeWidth="0.5" className="diary-line top-line" />
-        <line x1="0" y1="95" x2="100" y2="95" stroke="#E0DDB7" strokeWidth="0.5" className="diary-line bottom-line" />
-        
-        {/* Subtle, pulsing dots along the left (like stitching) */}
-        <circle cx="5" cy="10" r="0.5" fill="#E0DDB7" className="diary-dot dot-1" />
-        <circle cx="5" cy="20" r="0.5" fill="#E0DDB7" className="diary-dot dot-2" />
-        <circle cx="5" cy="30" r="0.5" fill="#E0DDB7" className="diary-dot dot-3" />
-        <circle cx="5" cy="40" r="0.5" fill="#E0DDB7" className="diary-dot dot-4" />
-        <circle cx="5" cy="50" r="0.5" fill="#E0DDB7" className="diary-dot dot-5" />
-        <circle cx="5" cy="60" r="0.5" fill="#E0DDB7" className="diary-dot dot-6" />
-        <circle cx="5" cy="70" r="0.5" fill="#E0DDB7" className="diary-dot dot-7" />
-        <circle cx="5" cy="80" r="0.5" fill="#E0DDB7" className="diary-dot dot-8" />
-        <circle cx="5" cy="90" r="0.5" fill="#E0DDB7" className="diary-dot dot-9" />
-    </svg>
-    
-</div>
-            </div>
-        </>
-    )
+    100% {
+        height: 280px;
+        width: 100%;
+        transform: translateY(0);
+    }
 }
 
-export default SmallLetter;
+@keyframes scalethendown {
+    0% {
+        height: 250px;
+        width: 100%;
+        transform: translateY(0);
+    }
+
+    50% {
+        height: 100px;
+        width: 90px;
+        transform: translateY(0);
+    }
+
+    60% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(250px);
+    }
+}
+
+@keyframes waitfade {
+
+    0%,
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes Small-wiggle {
+    0% {
+        transform: translateY(310px) rotate(0);
+    }
+
+    25% {
+        transform: translateY(310px) rotate(2deg);
+    }
+
+    50% {
+        transform: translateY(310px) rotate(0deg);
+    }
+
+    75% {
+        transform: translateY(310px) rotate(-2deg);
+    }
+
+    100% {
+        transform: translateY(310px) rotate(0);
+    }
+}
+
+/* --- Container and State Classes --- */
+
+.small-rajib-letter {
+    margin: 150px auto;
+    max-width: 350px;
+    height: 375px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+}
+
+.small-rajib-letter--open .small-rajib-paper {
+    animation-name: upthenscale;
+    animation-duration: .6s;
+    animation-fill-mode: forwards;
+}
+
+.small-rajib-letter--close .small-rajib-paper {
+    animation-name: scalethendown;
+    animation-duration: .4s;
+    animation-fill-mode: forwards;
+}
+
+.small-rajib-letter--open .small-rajib-paper-content {
+    animation-name: waitfade;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+}
+
+.small-rajib-letter--open .small-rajib-envelope {
+    animation: pause;
+}
+
+/* --- Content and Elements --- */
+
+.small-rajib-paper-content {
+    color: #545454;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    padding: 25px;
+    opacity: 0;
+}
+
+.small-rajib-paper {
+    height: 50px;
+    width: 90px;
+    background: #f1f0c3;
+    transform: translateY(250px);
+    margin: 0 auto;
+    transition: transform 0.3s 0.1s ease;
+    border-radius: 2px;
+    position: relative;
+}
+
+/* --- SVG Container inside the Paper --- */
+.small-rajib-paper .rajib-diary-deco {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+/* --- Base Diary Line/Dot Styling --- */
+.rajib-diary-deco .diary-line {
+    opacity: 0;
+    stroke-dasharray: 100;
+    /* For drawing effect */
+    stroke-dashoffset: 100;
+    animation-fill-mode: forwards;
+}
+
+.rajib-diary-deco .diary-dot {
+    opacity: 0;
+    transform-origin: center center;
+    animation-fill-mode: forwards;
+}
+
+/* --- Keyframe: Draw In (for lines) --- */
+@keyframes drawIn {
+    to {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+}
+
+/* --- Keyframe: Pulse Dot (for stitching) --- */
+@keyframes pulseDot {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+}
+
+
+/* --- Conditional Animation Application (Triggers when the letter is open) --- */
+
+/* Lines animate in (like being drawn) */
+.small-rajib-letter--open .rajib-diary-deco .diary-line {
+    animation: drawIn 1.5s ease-out 0.8s forwards;
+    /* Start after paper opens */
+}
+
+/* Dots appear and pulse after lines are drawn */
+.small-rajib-letter--open .rajib-diary-deco .diary-dot {
+    animation: pulseDot 2s ease-in-out infinite alternate forwards;
+    animation-delay: 2.0s;
+    /* Start after lines are mostly in */
+}
+
+/* Stagger dot animations for a more organic feel */
+.small-rajib-letter--open .rajib-diary-deco .dot-1 {
+    animation-delay: 2.0s;
+}
+
+.small-rajib-letter--open .rajib-diary-deco .dot-2 {
+    animation-delay: 2.1s;
+}
+
+.small-rajib-letter--open .rajib-diary-deco .dot-3 {
+    animation-delay: 2.2s;
+}
+
+.small-rajib-letter--open .rajib-diary-deco .dot-4 {
+    animation-delay: 2.3s;
+}
+
+.small-rajib-letter--open .rajib-diary-deco .dot-5 {
+    animation-delay: 2.4s;
+}
+
+.small-rajib-letter--open .rajib-diary-deco .dot-6 {
+    animation-delay: 2.5s;
+}
+
+.small-rajib-letter--open .rajib-diary-deco .dot-7 {
+    animation-delay: 2.6s;
+}
+
+.small-rajib-letter--open .rajib-diary-deco .dot-8 {
+    animation-delay: 2.7s;
+}
+
+.small-rajib-letter--open .rajib-diary-deco .dot-9 {
+    animation-delay: 2.8s;
+}
+
+/* Content z-index, if not already present */
+.small-rajib-paper-content {
+    z-index: 1;
+    position: relative;
+}
+
+.small-rajib-envelope {
+    width: 94px;
+    height: 60px;
+    background: #f36363;
+    position: relative;
+    margin: auto;
+    z-index: 2;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: box-shadow 0.3s ease;
+    transform: translateY(310px);
+    animation: Small-wiggle 0.3s 0.2s infinite;
+}
+
+/* Hover effects */
+.small-rajib-envelope:hover {
+    animation: pause;
+}
+
+.small-rajib-envelope:hover .small-rajib-envelope-paper {
+    transform: translateY(-20px);
+}
+
+.small-rajib-envelope:hover .small-rajib-envelope-flap {
+    transform: translateY(-45px);
+    transition: all 300ms ease-in-out;
+}
+
+.small-rajib-envelope:hover .small-rajib-envelope-detail::after {
+    visibility: hidden;
+}
+
+
+.small-rajib-envelope-paper {
+    height: 50px;
+    width: 90px;
+    background: #f1f0c3;
+    transform: translateY(0);
+    margin: 0 auto;
+    transition: transform 0.3s 0.1s ease;
+    border-radius: 2px;
+    position: absolute;
+    border: 2px solid transparent;
+}
+
+.small-rajib-letter--open .small-rajib-envelope-paper {
+    visibility: hidden;
+}
+
+.small-rajib-letter--open .small-rajib-envelope-detail::after {
+    visibility: hidden;
+}
+
+.small-rajib-letter--close .small-rajib-envelope-paper {
+    visibility: hidden;
+}
+
+.small-rajib-envelope-flap {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 45px solid transparent;
+    border-right: 45px solid transparent;
+    border-bottom: 45px solid #f36363;
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: auto;
+    transform: translateY(0);
+    transition: all 300ms ease-in-out;
+}
+
+.small-rajib-letter--open .small-rajib-envelope-flap {
+    transform: translateY(-45px);
+    transition: all 300ms ease-in-out;
+}
+
+.small-rajib-letter--open .small-rajib-envelope-detail {
+    border-top: 2px solid #e25b5b;
+}
+
+.small-rajib-envelope-detail {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    display: block;
+    position: absolute;
+    background: #f36363;
+    border-top: 2px solid transparent;
+}
+
+.small-rajib-envelope-detail:before {
+    content: '';
+    width: 70px;
+    height: 70px;
+    background: #f36363;
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 30px;
+    margin: auto;
+    transform: rotate(45deg);
+    border: 4px solid #e65454;
+}
+
+.small-rajib-envelope-detail:after {
+    content: '';
+    width: 70px;
+    height: 70px;
+    background: #f36363;
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -45px;
+    margin: auto;
+    transform: rotate(45deg);
+    border: 4px solid #e65454;
+}
+
+.small-rajib-envelope-fold {
+    height: 25px;
+    width: 86px;
+    background: #f36363;
+    border: 4px solid #e65454;
+    display: block;
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transition: all 0.3s ease;
+    border-radius: 3px;
+}
+
+.small-rajib-paper-close {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+
+
+
+
+
+@media screen and (max-width: 658px) {
+    .smallLetter {
+        position: absolute !important;
+        bottom: 0.2vh !important;
+        left: 60% !important;
+        transform: translateX(-50%) !important;
+        width: 90vw !important;
+        max-width: 320px !important;
+        z-index: 50 !important;
+        margin: 0 !important;
+    }
+
+    .small-rajib-letter {
+        margin: auto  !important;
+        width: 100% !important;
+        max-width: 230px !important;
+        height: 280px;
+    }
+
+    .small-rajib-envelope {
+        width: 80px;
+        height: 52px;
+        transform: translateY(220px) !important;
+        animation: Small-wiggle-mobile 0.3s 0.2s infinite !important;
+    }
+
+    @keyframes Small-wiggle-mobile {
+        0%, 100% { transform: translateY(220px) rotate(0deg); }
+        25% { transform: translateY(220px) rotate(2deg); }
+        50% { transform: translateY(220px) rotate(0deg); }
+        75% { transform: translateY(220px) rotate(-2deg); }
+    }
+
+    .small-rajib-envelope-detail::before {
+        width: 60px;
+        height: 60px;
+        top: 25px;
+    }
+
+    .small-rajib-envelope-detail::after {
+        width: 65px;
+        height: 65px;
+        top: -42px;
+    }
+
+    .small-rajib-envelope-paper {
+        height: 45px;
+        width: 76px;
+    }
+
+    .small-rajib-paper {
+        height: 45px;
+        width: 76px;
+        transform: translateY(180px);
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    @keyframes upthenscale {
+        0% {
+            transform: translateY(180px);
+        }
+
+        50% {
+            transform: translateY(0);
+        }
+
+        60% {
+            height: 100px;
+            width: 90px;
+            transform: translateY(0);
+        }
+
+        100% {
+            height: 260px;
+            width: 100%;
+            transform: translateY(0);
+        }
+    }
+
+    .small-rajib-paper-content {
+        font-size: 13px;
+        line-height: 1.45;
+        padding: 18px 20px 14px 22px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .small-rajib-envelope-flap {
+        border-left: 40px solid transparent;
+        border-right: 40px solid transparent;
+        border-bottom: 42px solid #f36363;
+        transition: all 300ms ease-in-out;
+        transform: translateY(-4px);
+    }
+
+    .small-rajib-letter--open .small-rajib-envelope {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+}
