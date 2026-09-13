@@ -407,10 +407,10 @@
     }
 
     .small-rajib-letter {
-        margin: 0 auto !important;
+        margin: auto  !important;
         width: 100% !important;
-        max-width: 320px !important;
-        height: 320px;
+        max-width: 230px !important;
+        height: 280px;
     }
 
     .small-rajib-envelope {
@@ -488,5 +488,12 @@
         border-bottom: 42px solid #f36363;
         transition: all 300ms ease-in-out;
         transform: translateY(-4px);
+    }
+
+    .small-rajib-letter--open .small-rajib-envelope {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
     }
 }
