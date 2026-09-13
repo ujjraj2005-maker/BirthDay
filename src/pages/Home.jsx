@@ -8,7 +8,6 @@ import hat from '../assets/hat.png'
 import smileIcon from '../assets/smiley_icon.png'
 import { Link } from "react-router";
 import BookCanvas from "../components/BookCanvas";
-import SmallLetter from "../components/SmallLetter";
 import manjariMain from "../assets/manjari_main.jpg";
 import photo1 from "../assets/manjari_bubble1.jpg";
 import photo2 from "../assets/manjari_bubble2.jpg";
@@ -200,11 +199,6 @@ const Home = () => {
 
                 {/* =========================== BoxMail Canvas =============================== */}
                 <BookCanvas active={Active} setActive={SetActive} />
-
-                {/* ========================== Small letter from Ujjwal ========================= */}
-                <section className="smallLetter absolute md:-bottom-28 -bottom-56 md:left-[45%] left-[50%] -translate-x-1/2" style={{ "--t": "15.6s" }}>
-                    <SmallLetter />
-                </section>
             </div>
         </>
     );

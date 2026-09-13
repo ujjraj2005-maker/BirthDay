@@ -245,6 +245,22 @@ body {
     }
 }
 
+@keyframes topHatMobile {
+
+    20%,
+    30% {
+        top: -51px;
+        transform-origin: left;
+        transform: rotate(-40deg);
+    }
+
+    35%,
+    100% {
+        top: -51px;
+        transform: rotate(0deg);
+    }
+}
+
 .date__of__birth,
 .name {
     display: flex;
@@ -826,21 +842,6 @@ body {
         animation: topHatMobile 4s 7s forwards ease;
     }
 
-    @keyframes topHatMobile {
-        20%,
-        30% {
-            top: -51px;
-            transform-origin: left;
-            transform: rotate(-40deg);
-        }
-
-        35%,
-        100% {
-            top: -51px;
-            transform: rotate(0deg);
-        }
-    }
-
     .box__letter .letter__border {
         position: absolute;
         width: 90vw;
@@ -998,29 +999,7 @@ body {
 
 
 
-/* --- New Keyframe: popInAndFloat --- */
-@keyframes popInAndFloat {
-    0% {
-        opacity: 0;
-        transform: translateY(350px) scale(0.9);
-    }
 
-    50% {
-        opacity: 1;
-        transform: translateY(310px) scale(1)
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0px) scale(1);
-    }
-}
-
-.small-rajib-letter {
-    opacity: 0;
-    animation: popInAndFloat 1.0s ease-out 16.0s forwards;
-    transform: translateY(310px);
-}
 
 /* =========================================================================
    📸 3 PHOTO BUBBLES STYLING (Manjari Photos)

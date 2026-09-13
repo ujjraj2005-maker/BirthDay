@@ -78,6 +78,35 @@
     }
 }
 
+@keyframes Small-wiggle-mobile {
+    0%, 100% { transform: translateY(220px) rotate(0deg); }
+    25% { transform: translateY(220px) rotate(2deg); }
+    50% { transform: translateY(220px) rotate(0deg); }
+    75% { transform: translateY(220px) rotate(-2deg); }
+}
+
+@keyframes upthenscaleMobile {
+    0% {
+        transform: translateY(180px);
+    }
+
+    50% {
+        transform: translateY(0);
+    }
+
+    60% {
+        height: 100px;
+        width: 90px;
+        transform: translateY(0);
+    }
+
+    100% {
+        height: 260px;
+        width: 100%;
+        transform: translateY(0);
+    }
+}
+
 /* --- Container and State Classes --- */
 
 .small-rajib-letter {
@@ -397,8 +426,8 @@
 @media screen and (max-width: 658px) {
     .smallLetter {
         position: absolute !important;
-        bottom: 10px !important;
-        left: 50% !important;
+        bottom: 0.2vh !important;
+        left: 60% !important;
         transform: translateX(-50%) !important;
         width: 90vw !important;
         max-width: 320px !important;
@@ -407,10 +436,10 @@
     }
 
     .small-rajib-letter {
-        margin: 0 auto !important;
+        margin: auto  !important;
         width: 100% !important;
-        max-width: 320px !important;
-        height: 320px;
+        max-width: 230px !important;
+        height: 280px;
     }
 
     .small-rajib-envelope {
@@ -418,13 +447,6 @@
         height: 52px;
         transform: translateY(220px) !important;
         animation: Small-wiggle-mobile 0.3s 0.2s infinite !important;
-    }
-
-    @keyframes Small-wiggle-mobile {
-        0%, 100% { transform: translateY(220px) rotate(0deg); }
-        25% { transform: translateY(220px) rotate(2deg); }
-        50% { transform: translateY(220px) rotate(0deg); }
-        75% { transform: translateY(220px) rotate(-2deg); }
     }
 
     .small-rajib-envelope-detail::before {
@@ -452,26 +474,10 @@
         box-sizing: border-box;
     }
 
-    @keyframes upthenscale {
-        0% {
-            transform: translateY(180px);
-        }
-
-        50% {
-            transform: translateY(0);
-        }
-
-        60% {
-            height: 100px;
-            width: 90px;
-            transform: translateY(0);
-        }
-
-        100% {
-            height: 260px;
-            width: 100%;
-            transform: translateY(0);
-        }
+    .small-rajib-letter--open .small-rajib-paper {
+        animation-name: upthenscaleMobile !important;
+        animation-duration: .6s;
+        animation-fill-mode: forwards;
     }
 
     .small-rajib-paper-content {
@@ -488,5 +494,12 @@
         border-bottom: 42px solid #f36363;
         transition: all 300ms ease-in-out;
         transform: translateY(-4px);
+    }
+
+    .small-rajib-letter--open .small-rajib-envelope {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
     }
 }
