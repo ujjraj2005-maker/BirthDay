@@ -807,8 +807,8 @@ body {
 
     .cricle {
         position: absolute;
-        top: 0px;
-        left: -40px;
+        top: 78px;
+        left: -60px;
         right: auto;
         display: flex;
         justify-content: center;
