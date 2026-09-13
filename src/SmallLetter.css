@@ -397,16 +397,19 @@
 @media screen and (max-width: 658px) {
     .smallLetter {
         position: absolute !important;
-        bottom: 0.5px !important;
-        left: 20% !important;
-        transform: translateX(-10%) !important;
+        bottom: 10px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 90vw !important;
+        max-width: 320px !important;
         z-index: 50 !important;
         margin: 0 !important;
     }
 
     .small-rajib-letter {
         margin: 0 auto !important;
-        max-width: 320px;
+        width: 100% !important;
+        max-width: 320px !important;
         height: 320px;
     }
 
@@ -445,6 +448,8 @@
         height: 45px;
         width: 76px;
         transform: translateY(180px);
+        margin: 0 auto;
+        box-sizing: border-box;
     }
 
     @keyframes upthenscale {
@@ -470,9 +475,11 @@
     }
 
     .small-rajib-paper-content {
-        font-size: 14px;
-        padding: 16px;
+        font-size: 13px;
+        line-height: 1.45;
+        padding: 18px 20px 14px 22px;
         width: 100%;
+        box-sizing: border-box;
     }
 
     .small-rajib-envelope-flap {
