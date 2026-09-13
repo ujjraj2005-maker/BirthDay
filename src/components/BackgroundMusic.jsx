@@ -1,155 +1,53 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-// =========================================================================
-// 🎵 WEB AUDIO MUSIC BOX SYNTHESIZER (Fallback Birthday Melody)
-// Generates a sweet vintage music-box Happy Birthday chime with 0 network calls!
-// =========================================================================
-class MusicBoxSynthesizer {
-  constructor() {
-    this.audioCtx = null;
-    this.timer = null;
-    this.isPlaying = false;
-
-    this.notes = [
-      { note: 261.63, dur: 0.4, pause: 0.45 }, // C4
-      { note: 261.63, dur: 0.4, pause: 0.45 }, // C4
-      { note: 293.66, dur: 0.7, pause: 0.8 },  // D4
-      { note: 261.63, dur: 0.7, pause: 0.8 },  // C4
-      { note: 349.23, dur: 0.7, pause: 0.8 },  // F4
-      { note: 329.63, dur: 1.2, pause: 1.4 },  // E4
-
-      { note: 261.63, dur: 0.4, pause: 0.45 }, // C4
-      { note: 261.63, dur: 0.4, pause: 0.45 }, // C4
-      { note: 293.66, dur: 0.7, pause: 0.8 },  // D4
-      { note: 261.63, dur: 0.7, pause: 0.8 },  // C4
-      { note: 392.00, dur: 0.7, pause: 0.8 },  // G4
-      { note: 349.23, dur: 1.2, pause: 1.4 },  // F4
-
-      { note: 261.63, dur: 0.4, pause: 0.45 }, // C4
-      { note: 261.63, dur: 0.4, pause: 0.45 }, // C4
-      { note: 523.25, dur: 0.7, pause: 0.8 },  // C5
-      { note: 440.00, dur: 0.7, pause: 0.8 },  // A4
-      { note: 349.23, dur: 0.7, pause: 0.8 },  // F4
-      { note: 329.63, dur: 0.7, pause: 0.8 },  // E4
-      { note: 293.66, dur: 1.0, pause: 1.2 },  // D4
-
-      { note: 466.16, dur: 0.4, pause: 0.45 }, // A#4
-      { note: 466.16, dur: 0.4, pause: 0.45 }, // A#4
-      { note: 440.00, dur: 0.7, pause: 0.8 },  // A4
-      { note: 349.23, dur: 0.7, pause: 0.8 },  // F4
-      { note: 392.00, dur: 0.7, pause: 0.8 },  // G4
-      { note: 349.23, dur: 1.4, pause: 1.8 },  // F4
-    ];
-  }
-
-  init() {
-    if (!this.audioCtx) {
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      this.audioCtx = new AudioCtx();
-    }
-    if (this.audioCtx.state === 'suspended') {
-      this.audioCtx.resume();
-    }
-  }
-
-  playNote(freq, duration) {
-    if (!this.audioCtx) return;
-    try {
-      const osc = this.audioCtx.createOscillator();
-      const gain = this.audioCtx.createGain();
-
-      osc.type = 'sine'; // Soft music-box chime
-      osc.frequency.setValueAtTime(freq, this.audioCtx.currentTime);
-
-      gain.gain.setValueAtTime(0.001, this.audioCtx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.18, this.audioCtx.currentTime + 0.03);
-      gain.gain.exponentialRampToValueAtTime(0.0001, this.audioCtx.currentTime + duration);
-
-      osc.connect(gain);
-      gain.connect(this.audioCtx.destination);
-
-      osc.start();
-      osc.stop(this.audioCtx.currentTime + duration);
-    } catch (e) {}
-  }
-
-  start() {
-    this.init();
-    if (this.isPlaying) return;
-    this.isPlaying = true;
-    let step = 0;
-
-    const tick = () => {
-      if (!this.isPlaying) return;
-      const current = this.notes[step];
-      this.playNote(current.note, current.dur);
-
-      step = (step + 1) % this.notes.length;
-      this.timer = setTimeout(tick, current.pause * 1000);
-    };
-
-    tick();
-  }
-
-  stop() {
-    this.isPlaying = false;
-    if (this.timer) clearTimeout(this.timer);
-  }
-}
-
-const synthPlayer = new MusicBoxSynthesizer();
-
 const BackgroundMusic = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
-  const hasUnlockedRef = useRef(false);
 
   const startAudio = () => {
-    if (audioRef.current) {
-      audioRef.current.play().then(() => {
-        setIsPlaying(true);
-        hasUnlockedRef.current = true;
-      }).catch(() => {
-        synthPlayer.start();
-        setIsPlaying(true);
-        hasUnlockedRef.current = true;
-      });
-    } else {
-      synthPlayer.start();
+    if (!audioRef.current) return;
+
+    audioRef.current.play().then(() => {
       setIsPlaying(true);
-      hasUnlockedRef.current = true;
-    }
+    }).catch(() => {
+      setIsPlaying(false);
+    });
   };
 
   const togglePlay = (e) => {
-    if (e) {
-      e.stopPropagation();
-    }
+    if (e) e.stopPropagation();
+    if (!audioRef.current) return;
+
     if (isPlaying) {
-      if (audioRef.current) audioRef.current.pause();
-      synthPlayer.stop();
+      audioRef.current.pause();
       setIsPlaying(false);
     } else {
-      startAudio();
+      audioRef.current.play().then(() => {
+        setIsPlaying(true);
+      }).catch((err) => {
+        console.log("Play error:", err);
+      });
     }
   };
 
   useEffect(() => {
-    // 1. Attempt autoplay on initial mount
+    // 1. Attempt immediate autoplay when page opens
     startAudio();
 
-    // 2. First gesture listener to unlock audio if browser autoplay blocked zero-gesture playback
+    // 2. Gesture listener for first tap/click anywhere on screen to trigger playback if autoplay was blocked by browser
     const handleGesture = (e) => {
-      // Ignore if user clicked directly on the Retro CD button (togglePlay handles that)
+      // Ignore if clicking the Retro CD button directly (togglePlay handles it)
       if (e.target && e.target.closest('#retro-cd-button')) return;
 
-      if (!hasUnlockedRef.current) {
-        startAudio();
-        removeListeners();
+      if (audioRef.current && audioRef.current.paused) {
+        audioRef.current.play().then(() => {
+          setIsPlaying(true);
+          removeGestureListeners();
+        }).catch(() => {});
       }
     };
 
-    const removeListeners = () => {
+    const removeGestureListeners = () => {
       window.removeEventListener('click', handleGesture);
       window.removeEventListener('touchstart', handleGesture);
       window.removeEventListener('pointerdown', handleGesture);
@@ -162,8 +60,10 @@ const BackgroundMusic = () => {
     window.addEventListener('keydown', handleGesture);
 
     return () => {
-      removeListeners();
-      synthPlayer.stop();
+      removeGestureListeners();
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
     };
   }, []);
 
